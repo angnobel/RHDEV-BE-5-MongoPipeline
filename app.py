@@ -45,7 +45,7 @@ db.bookSellingData.aggregate(pipeline4)
 pipeline5 = [
     {"$unwind" : "$supplier"},
     {"$match" : {"supplier" : "titan"}},
-    {"$group" : {"_id" : "$isbn", "total_copies_sold" : {"$sum" : "$copies_sold"}, "total_money_earned" : {"$sum" : "$total_price"} }}
+    {"$group" : {"_id" : "$isbn", "total_copies_sold" : {"$sum" : "$copies_sold"}, "total_money_earned" : {"$sum" : "$total_price"} }},
     {
         "$addFields" :
             {"average_price" {"$divide" : ["$total_money_earned", "total_copies_sold"] }}
